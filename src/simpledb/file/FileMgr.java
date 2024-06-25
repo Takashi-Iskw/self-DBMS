@@ -35,6 +35,7 @@ public class FileMgr {
             throw new RuntimeException("cannot read block " + blk);
         }
     }
+    // p.contents()とは？ p.contents (バッファのこと) にfの情報が記述されるっぽい。
 
     public synchronized void write (BlockId blk, Page p) {
         try {
@@ -46,6 +47,7 @@ public class FileMgr {
             throw new RuntimeException("cannot write block " + blk);
         }
     }
+    // writeメソッドはp.contents (バッファ) の内容がfに書き込まれる。readの逆らしい
 
     // fileの最後に空のbyte配列を追加？
     public synchronized BlockId append(String filename) {
