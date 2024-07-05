@@ -34,6 +34,7 @@ public class SetIntRecord implements LogRecord {
    public String toString() {
       return "<SETINT " + txnum + " " + blk + " " + offset + " " + val + ">";
    }
+   // blkのtoStringは[file "hoge", block num]という形になる
 
    public void undo(Transaction tx) {
       tx.pin(blk);

@@ -11,7 +11,7 @@ public interface LogRecord {
                      SETSTRING = 5;
     int op();
     int txNumber();
-    void undo(int txnum);
+    void undo(Transaction tx);
 
     static LogRecord createLogRecord(byte[] bytes) {
         Page p = new Page(bytes);           // ログレコードを読み取るモードのPage
