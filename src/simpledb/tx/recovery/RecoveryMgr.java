@@ -1,14 +1,10 @@
 package simpledb.tx.recovery;
 
-import simpledb.buffer.Buffer;
-import simpledb.buffer.BufferMgr;
-import simpledb.file.BlockId;
-import simpledb.log.LogMgr;
-
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Iterator;
-
+import java.util.*;
+import simpledb.file.*;
+import simpledb.log.*;
+import simpledb.buffer.*;
+import simpledb.tx.Transaction;
 import static simpledb.tx.recovery.LogRecord.*;
 
 public class RecoveryMgr {
@@ -84,8 +80,7 @@ public class RecoveryMgr {
                 return;
             if(rec.op() == COMMIT || rec.op() == ROLLBACK)
                 finishedTxs.add(rec.txNumber());
-            else if(!finishedTxs.contains(rec.txNumber()))          // 終了済みTxでなければundo
-                                                                    // (コミットを見つける前であれば、後に(それ以前に)コミットするTxもundo)
+            else if(!finishedTxs.contains(rec.txNumber()))        // 終了済みTxでなければundo (コミットを見つける前であれば、後に(それ以前に)コミットしたTxもundo)
                 rec.undo(tx);
         }
     }

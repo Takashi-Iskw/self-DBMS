@@ -53,7 +53,7 @@ public class LogMgr {
         }
         int recpos = boundary - bytesneeded;
         logpage.setBytes(recpos, logrec);
-        logpage.setInt(0, recpos); // 新boundary
+        logpage.setInt(0, recpos); // 新boundaryをoffset0へ
         latestLSN += 1;
         return latestLSN;
     }

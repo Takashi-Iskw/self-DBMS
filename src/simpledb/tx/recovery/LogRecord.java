@@ -1,6 +1,7 @@
 package simpledb.tx.recovery;
 
 import simpledb.file.Page;
+import simpledb.tx.Transaction;
 
 public interface LogRecord {
     static final int CHECKPOINT = 0,
