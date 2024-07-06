@@ -28,8 +28,8 @@ public class ConcurrencyMgr {
 
     public void release() {
         for(BlockId blk : locks.keySet())
-            locktbl.unlock(blk);                    // lockの個数-- lockが0になるならMapから削除
-        locks.clear();
+            locktbl.unlock(blk);                    // あるTxが持つlockの個数-- lockが0になるならMapから削除
+        locks.clear();                              // あるTxが持つlocks内の全てのエントリーを削除
     }
 
     private boolean hasXLock(BlockId blk) {

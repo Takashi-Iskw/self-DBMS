@@ -53,6 +53,7 @@ public class RecoveryMgr {
         return SetIntRecord.writeToLog(lm, txnum, blk, offset, oldval);
     }
     // newvalはどこに行った？ なぜoldvalをログとして書き込むのか
+    // RecMgrのsetIntはログに関するもののみっぽい。実際のデータの変更はtx.setIntとかでやってそう
 
     public int setString(Buffer buff, int offset, String newval) {
         String oldval = buff.contents().getString(offset);
