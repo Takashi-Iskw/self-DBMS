@@ -36,14 +36,15 @@ public class BufferList {
     void unpin(BlockId blk) {
         Buffer buff = buffers.get(blk);
         bm.unpin(buff);
-        pins.remove(blk);
+        pins.remove(blk);                   // pinは一つしか削除されない
         if(!pins.contains(blk))
             buffers.remove(blk);
     }
     // !pins.contains(blk) pinsには同じblkが複数入っている場合もあるということ？
+    // tx.pinをしたあと、RecordPageのコンストラクタでtx.pinをした場合などが該当しそう
 
     void unpinAll() {
-        for(BlockId blk : pins) {
+        for(BlockId blk : pins) {                       // 同じbuffに対する、同じblkに重複して取ったpinも全部削除
             Buffer buff = buffers.get(blk);
             bm.unpin(buff);
         }
