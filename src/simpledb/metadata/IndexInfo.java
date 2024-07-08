@@ -29,6 +29,7 @@ public class IndexInfo {
 //        return new BTreeIndex(tx, idxname, idxLayout);
     }
 
+    // ある検索キー(条件)が与えられた場合に、検索のためにアクセスするブロックの個数を見積もる
     public int blocksAccessed() {
         int rpb = tx.blockSize() / idxLayout.slotSize();        // Record Per Block
         int numblocks = si.recordsOutput() / rpb;
@@ -36,6 +37,7 @@ public class IndexInfo {
 //        return BTreeIndex.searchCost(numblocks, rpb);
     }
 
+    // ある検索キー(条件)が与えられた場合に、何個のレコードが表示されるか(同じ専攻でも複数の学生がヒット、みたいな)
     public int recordsOutput() {
         return si.recordsOutput() / si.distinctValues(fldname);     // si.recordsOutput() -> レコードの数
     }
