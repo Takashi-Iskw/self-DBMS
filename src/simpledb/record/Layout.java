@@ -49,6 +49,6 @@ public class Layout {
         if(fldtype == INTEGER)
             return Integer.BYTES;
         else                                                        // VARCHAR
-            return Page.maxLength(schema.length(fldname));          // 先頭の文字列長さを含んだ文字数
+            return Page.maxLength(schema.length(fldname));          // 先頭の文字列長さを含んだ文字数。 → Schemaのlengthは先頭4バイトを含まなそう
     }
 }

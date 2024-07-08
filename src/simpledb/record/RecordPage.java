@@ -40,7 +40,7 @@ public class RecordPage {
         tx.setString(blk, fldpos, val, true);
     }
 
-    //slot個目のレコードのフラグを0に
+    // slot個目のレコードのフラグを0に
     public void delete(int slot) {
         setFlag(slot, EMPTY);
     }
