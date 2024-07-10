@@ -1,5 +1,7 @@
 package simpledb.query;
 
+import simpledb.record.RID;
+
 public class SelectScan implements UpdateScan{
     private Scan s;
     private Predicate pred;
@@ -15,6 +17,7 @@ public class SelectScan implements UpdateScan{
         s.beforeFirst();
     }
 
+    // 述語を満たすまでレコードの読み込みを続ける
     public boolean next() {
         while (s.next())
             if (pred.isSatisfied(s))
@@ -47,6 +50,36 @@ public class SelectScan implements UpdateScan{
     public void setInt(String fldname, int val) {
         UpdateScan us = (UpdateScan) s;
         us.setInt(fldname, val);
+    }
+
+    public void setString(String fldname, String val) {
+        UpdateScan us = (UpdateScan) s;
+        us.setString(fldname, val);
+    }
+
+    public void setVal(String fldname, Constant val) {
+        UpdateScan us = (UpdateScan) s;
+        us.setVal(fldname, val);
+    }
+
+    public void delete() {
+        UpdateScan us = (UpdateScan) s;
+        us.delete();
+    }
+
+    public void insert() {
+        UpdateScan us = (UpdateScan) s;
+        us.insert();
+    }
+
+    public RID getRid() {
+        UpdateScan us = (UpdateScan) s;
+        return us.getRid();
+    }
+
+    public void moveToRid(RID Rid) {
+        UpdateScan us = (UpdateScan) s;
+        us.moveToRid(rid);
     }
 }
 
