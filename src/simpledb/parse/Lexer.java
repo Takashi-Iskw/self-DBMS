@@ -58,6 +58,7 @@ public class Lexer {
         nextToken();
         return i;
     }
+    // tok.nvalは何　StreamTokenizerの値を取得しているみたいな感じか
 
     public String eatStringConstant() {
         if (!matchStringConstant())
