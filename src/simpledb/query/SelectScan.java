@@ -77,7 +77,7 @@ public class SelectScan implements UpdateScan{
         return us.getRid();
     }
 
-    public void moveToRid(RID Rid) {
+    public void moveToRid(RID rid) {
         UpdateScan us = (UpdateScan) s;
         us.moveToRid(rid);
     }

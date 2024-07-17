@@ -41,6 +41,6 @@ public class Expression {
     // Expressionが定数なら使えるし、フィールド名ならそのフィールドが存在すれば使える
 
     public String toString() {
-        return (vaal != null) ? val.toString() : fldname;
+        return (val != null) ? val.toString() : fldname;
     }
 }
